@@ -38,6 +38,58 @@ three instances of a `Human`, then create an array called people of type [`Human
 
 Create a new array called sortedPeople of type [`Human`] that is the people array sorted by age.
 
+Answer:
+```swift
+class Human: CustomStringConvertible, Equatable, Comparable {
+    var name : String
+    var age : Int
+    
+    var description: String {
+        return "\(name) is \(age) years old."
+    }
+    
+    init(name: String, age: Int) {
+        self.name = name
+        self.age = age
+    }
+    
+    static func == (lhs: Human, rhs: Human) -> Bool {
+        return lhs.age == rhs.age && lhs.name == rhs.name
+    }
+    
+    static func < (lhs: Human, rhs: Human) -> Bool {
+        return lhs.age < lhs.age
+    }
+    
+}
+
+var mina = Human(name: "Mina", age: 23)
+var yisy = Human(name: "Yisy", age: 25)
+print(mina)
+print(yisy)
+
+if mina == yisy {
+    print("This is the same person.")
+} else {
+    print("These are not the same people.")
+}
+
+var carlos = Human(name: "Carlos", age: 47)
+var luz = Human(name: "Luz", age: 52)
+var patricia = Human(name: "Patricia", age: 27)
+
+var humans = [Human]()
+
+humans.append(mina)
+humans.append(yisy)
+humans.append(luz)
+humans.append(carlos)
+humans.append(patricia)
+var sortedPeeps = [mina.age, yisy.age, luz.age, carlos.age, patricia.age].sorted()
+print(sortedPeeps)
+
+```
+
 </br> </br>
 
 
@@ -54,6 +106,40 @@ then call drive().
 c. Define a Bike struct that implements the `Vehicle` protocol. `numberOfWheels` should return a value of 2,
 and drive() should print "Begin pedaling!". Create an instance of Bike, print its number of wheels,
 then call drive().
+
+Answer:
+```swift
+protocol Vehicle {
+    var numberOfWheels : Int {get}
+    
+    func drive()
+}
+
+struct Car : Vehicle {
+    var numberOfWheels: Int {
+        return 4
+    }
+    func drive() {
+        print("vroom, vroom!")
+    }
+}
+
+var toyota = Car()
+toyota.drive()
+
+struct Bike : Vehicle {
+    var numberOfWheels: Int {
+        return 2
+    }
+    func drive() {
+        print("Begin pedaling")
+    }
+}
+
+var bicycle = Bike()
+bicycle.drive()
+
+```
 
 </br> </br>
 
