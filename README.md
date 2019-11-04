@@ -78,14 +78,8 @@ var carlos = Human(name: "Carlos", age: 47)
 var luz = Human(name: "Luz", age: 52)
 var patricia = Human(name: "Patricia", age: 27)
 
-var humans = [Human]()
-
-humans.append(mina)
-humans.append(yisy)
-humans.append(luz)
-humans.append(carlos)
-humans.append(patricia)
-var sortedPeeps = [mina.age, yisy.age, luz.age, carlos.age, patricia.age].sorted()
+var humans : [Human] = [mina, yisy, patricia, carlos, luz]
+var sortedPeeps:[Human] = humans.sorted()
 print(sortedPeeps)
 
 ```
@@ -159,6 +153,30 @@ protocol Flyable {
  var airspeedVelocity: Double { get }
 }
 ```
+Answer:
+```swift
+struct Penguin: Bird {
+    var name: String {
+        return "Penguin"
+    }
+    var canFly: Bool {
+        return false
+    }
+}
+
+struct Eagle : Bird, Flyable {
+    var name: String{
+        return "Eagle"
+    }
+    var canFly: Bool {
+        return true
+    }
+    var airspeedVelocity: Double {
+        return Double.random(in: 75...95)    
+        
+}
+}
+```
 
 </br> </br>
 
@@ -183,6 +201,27 @@ bruceBanner.transform() . // hulk
 
 bruceBanner.transform()  // notHulk
 ```
+Answer: 
+```swift
+enum SuperHero : Transformation {
+    case hulk
+    case notHulk
+    mutating func transform() {
+        switch self {
+        case .notHulk :
+            self = .hulk
+            print("Gross. It's Hulk")
+        case .hulk :
+            self = .notHulk
+            print("Phew. Back to normal")
+            
+        }
+    }
+}
+
+var bruceBanner = SuperHero.notHulk
+bruceBanner.transform()
+```
 
 </br> </br>
 
@@ -203,6 +242,41 @@ f. Put an instance of each of your classes in an array.
 
 g. Iterate over the array and have them print their `message` property
 
+Answer:
+```swift
+protocol Communication {
+    var message : String {get}
+}
+
+class Cow : Communication {
+    var message: String {
+        return "This is a cow"
+    }
+}
+
+class Dog : Communication {
+    var message: String {
+        return "This is a good boy"
+    }
+}
+
+class Cat : Communication {
+    var message: String {
+        return "This is a cat"
+    }
+}
+
+var cat = Cat.init().message
+var cow = Cow.init().message
+var dog = Dog.init().message
+var animals = [cat, cow, dog]
+
+for animal in animals {
+    print(animal)
+}
+
+
+```
 
 ## Question 6
 
